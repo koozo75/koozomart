@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { products } from '../data/products';
+---
+
+<Layout title="Produits · Koozo Mart">
+  <section class="mb-14">
+    <p class="text-xs tracking-[0.4em] text-gold mb-4">PRODUITS</p>
+    <h1 class="font-serif text-4xl md:text-5xl">Notre sélection</h1>
+    <p class="mt-5 text-ink-soft max-w-xl leading-relaxed">
+      Une petite sélection de ce qui remplit actuellement nos rayons. Mise à jour au fil des arrivages.
+    </p>
+  </section>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-14">
+    {products.map((p) => (
+      <article class="group">
+        <div class="aspect-square bg-ink-line/30 overflow-hidden">
+          {p.image && (
+            <img
+              src={p.image}
+              alt={p.name}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          )}
+        </div>
+        <div class="mt-4 flex items-baseline justify-between">
+          <h2 class="font-serif text-lg">{p.name}</h2>
+          <span class="text-xs text-gold tracking-widest">{p.origin}</span>
+        </div>
+        <p class="mt-1 text-sm text-ink-mute">{p.category}</p>
+        <p class="mt-3 text-sm text-ink-soft leading-relaxed">{p.description}</p>
+      </article>
+    ))}
+  </div>
+</Layout>

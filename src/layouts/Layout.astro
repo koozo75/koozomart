@@ -1,0 +1,80 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Koozo Mart — Épicerie japonaise & coréenne',
+  description = 'Koozo Mart, une épicerie dédiée aux produits alimentaires et du quotidien venus du Japon et de la Corée.',
+} = Astro.props;
+
+const nav = [
+  { href: '/', label: 'Accueil' },
+  { href: '/products', label: 'Produits' },
+  { href: '/about', label: 'À propos' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&family=Noto+Serif+JP:wght@400;500&display=swap"
+    />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-ivory text-ink antialiased">
+    <header class="border-b border-ink-line/70">
+      <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3">
+          <img src="/logo.jpg" alt="Koozo Mart" class="h-12 w-12 rounded-full object-cover bg-ink" />
+          <span class="font-serif text-xl tracking-wide">Koozo Mart</span>
+        </a>
+        <nav class="flex gap-8 text-sm">
+          {nav.map((item) => (
+            <a
+              href={item.href}
+              class:list={[
+                'transition-colors',
+                pathname === item.href
+                  ? 'text-ink border-b border-gold pb-1'
+                  : 'text-ink-soft hover:text-ink',
+              ]}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-16">
+      <slot />
+    </main>
+
+    <footer class="border-t border-ink-line/70 mt-24">
+      <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
+        <div class="flex items-center gap-3">
+          <img src="/logo.jpg" alt="" class="h-8 w-8 rounded-full object-cover bg-ink" />
+          <span class="font-serif">Koozo Mart</span>
+        </div>
+        <p class="text-sm text-ink-mute">
+          &copy; {new Date().getFullYear()} Koozo Mart · Épicerie japonaise & coréenne
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
