@@ -1,9 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { products } from '../data/products';
+import { categories } from '../data/categories';
 import { boutiques } from '../data/boutiques';
 
-const featured = products.slice(0, 3);
 const deliverooShops = boutiques.filter((b) => b.deliveroo);
 ---
 
@@ -38,28 +37,26 @@ const deliverooShops = boutiques.filter((b) => b.deliveroo);
   <section class="border-t border-ink-line/70 pt-12 md:pt-16 mt-4 md:mt-8">
     <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-10 md:mb-12">
       <div>
-        <p class="text-xs tracking-[0.4em] text-gold mb-3">SÉLECTION</p>
-        <h2 class="font-serif text-3xl md:text-4xl">Nos produits phares</h2>
+        <p class="text-xs tracking-[0.4em] text-gold mb-3">NOS RAYONS</p>
+        <h2 class="font-serif text-3xl md:text-4xl">Ce que vous trouverez chez nous</h2>
       </div>
-      <a href="/products" class="text-sm text-ink-mute hover:text-ink">Voir tous →</a>
+      <a href="/boutiques" class="text-sm text-ink-mute hover:text-ink">Venir en boutique →</a>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {featured.map((p) => (
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-8">
+      {categories.map((c) => (
         <article class="group">
           <div class="aspect-square bg-ink-line/30 overflow-hidden">
-            {p.image && (
-              <img
-                src={p.image}
-                alt={p.name}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            )}
+            <img
+              src={c.image}
+              alt={c.name}
+              loading="lazy"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
           </div>
-          <div class="mt-4 flex items-baseline justify-between">
-            <h3 class="font-serif text-lg">{p.name}</h3>
-            <span class="text-xs tracking-widest text-gold">{p.origin}</span>
+          <div class="mt-3 md:mt-4">
+            <h3 class="font-serif text-base md:text-lg leading-tight">{c.name}</h3>
+            <p class="mt-1 text-xs tracking-widest text-gold">{c.subtitle}</p>
           </div>
-          <p class="mt-1 text-sm text-ink-mute">{p.category}</p>
         </article>
       ))}
     </div>
