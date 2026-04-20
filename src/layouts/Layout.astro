@@ -39,17 +39,17 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
   </head>
   <body class="min-h-screen bg-ivory text-ink antialiased">
     <header class="border-b border-ink-line/70">
-      <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-3">
-          <img src="/logo.jpg" alt="Koozo Mart" class="h-12 w-12 rounded-full object-cover bg-ink" />
-          <span class="font-serif text-xl tracking-wide">Koozo Mart</span>
+      <div class="max-w-6xl mx-auto px-5 sm:px-6 py-4 sm:h-20 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+        <a href="/" class="flex items-center gap-3 self-center sm:self-auto">
+          <img src="/logo.jpg" alt="Koozo Mart" class="h-10 w-10 sm:h-12 sm:w-12 rounded-full object-cover bg-ink" />
+          <span class="font-serif text-lg sm:text-xl tracking-wide">Koozo Mart</span>
         </a>
-        <nav class="flex gap-8 text-sm">
+        <nav class="flex justify-center gap-5 sm:gap-8 text-sm overflow-x-auto whitespace-nowrap -mx-5 px-5 sm:mx-0 sm:px-0">
           {nav.map((item) => (
             <a
               href={item.href}
               class:list={[
-                'transition-colors',
+                'transition-colors shrink-0',
                 pathname === item.href
                   ? 'text-ink border-b border-gold pb-1'
                   : 'text-ink-soft hover:text-ink',
@@ -62,7 +62,7 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
       </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-16">
+    <main class="max-w-6xl mx-auto px-5 sm:px-6 py-10 md:py-16">
       <slot />
     </main>
 
