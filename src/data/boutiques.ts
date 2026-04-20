@@ -7,6 +7,7 @@ export interface Boutique {
   mapQuery: string;
   status?: 'ouverte' | 'bientot';
   metro?: string;
+  deliveroo?: string;
 }
 
 export const boutiques: Boutique[] = [
@@ -19,6 +20,7 @@ export const boutiques: Boutique[] = [
     mapQuery: 'KOOZO BASTILLE, 22 rue de Lappe, 75011 Paris',
     status: 'ouverte',
     metro: 'Bastille (1, 5, 8)',
+    deliveroo: 'https://deliveroo.fr/fr/menu/paris/11eme-bastille/koozo-mart',
   },
   {
     slug: 'republique',
@@ -29,6 +31,7 @@ export const boutiques: Boutique[] = [
     mapQuery: 'KOOZO REPUBLIQUE, 77 rue de Turbigo, 75003 Paris',
     status: 'ouverte',
     metro: 'Temple (3) · Arts et Métiers (3, 11)',
+    deliveroo: 'https://deliveroo.fr/fr/menu/paris/paris-3e-temple/koozo-mart-republique',
   },
   {
     slug: 'montrouge',

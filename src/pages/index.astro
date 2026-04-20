@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { products } from '../data/products';
+import { boutiques } from '../data/boutiques';
 
 const featured = products.slice(0, 3);
+const deliverooShops = boutiques.filter((b) => b.deliveroo);
 ---
 
 <Layout>
@@ -84,6 +86,35 @@ const featured = products.slice(0, 3);
       <p class="mt-2 text-sm text-ink-soft leading-relaxed">
         Pas des objets de vitrine — des choses que vous allez réellement utiliser.
       </p>
+    </div>
+  </section>
+
+  <section class="mt-16 md:mt-24 border-t border-ink-line/70 pt-12 md:pt-16">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-10 md:mb-12">
+      <div>
+        <p class="text-xs tracking-[0.4em] text-gold mb-3">LIVRAISON</p>
+        <h2 class="font-serif text-3xl md:text-4xl">Commandez à domicile</h2>
+      </div>
+      <p class="text-sm text-ink-mute max-w-xs">
+        Disponible à Paris via Deliveroo depuis nos boutiques Bastille et République.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {deliverooShops.map((b) => (
+        <a
+          href={b.deliveroo}
+          target="_blank"
+          rel="noopener"
+          class="group flex items-center justify-between p-6 md:p-8 border border-ink-line/70 hover:border-ink transition-colors"
+        >
+          <div>
+            <p class="text-xs tracking-[0.3em] text-gold mb-2">DELIVEROO</p>
+            <p class="font-serif text-xl md:text-2xl">{b.name}</p>
+            <p class="mt-1 text-sm text-ink-mute">{b.address} · {b.postcode}</p>
+          </div>
+          <span class="text-ink-mute group-hover:text-ink text-2xl ml-4">→</span>
+        </a>
+      ))}
     </div>
   </section>
 
