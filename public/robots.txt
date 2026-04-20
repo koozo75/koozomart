@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://koozomart.com/sitemap-index.xml
