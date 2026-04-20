@@ -1,36 +1,65 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { boutiques } from '../data/boutiques';
 ---
 
 <Layout title="Contact · Koozo Mart">
-  <section class="max-w-2xl">
+  <section class="max-w-3xl">
     <p class="text-xs tracking-[0.4em] text-gold mb-4">CONTACT</p>
     <h1 class="font-serif text-4xl md:text-5xl mb-12">Nous contacter</h1>
 
-    <dl class="space-y-8">
-      <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10 border-b border-ink-line/70 pb-6">
-        <dt class="text-xs tracking-[0.3em] text-gold sm:w-36">ADRESSE</dt>
-        <dd class="text-ink-soft">À compléter</dd>
-      </div>
+    <dl class="space-y-8 mb-16">
       <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10 border-b border-ink-line/70 pb-6">
         <dt class="text-xs tracking-[0.3em] text-gold sm:w-36">HORAIRES</dt>
-        <dd class="text-ink-soft">Du lundi au dimanche · 10h00 – 20h00</dd>
+        <dd class="text-ink-soft">
+          Du lundi au dimanche<br/>
+          <span class="text-ink">10h30 — 20h30</span>
+        </dd>
       </div>
+
       <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10 border-b border-ink-line/70 pb-6">
-        <dt class="text-xs tracking-[0.3em] text-gold sm:w-36">TÉLÉPHONE</dt>
-        <dd class="text-ink-soft">À compléter</dd>
+        <dt class="text-xs tracking-[0.3em] text-gold sm:w-36">BOUTIQUES</dt>
+        <dd class="text-ink-soft space-y-3">
+          {boutiques.map((b) => (
+            <div>
+              <a
+                href={`/boutiques#${b.slug}`}
+                class="text-ink hover:text-gold transition-colors"
+              >
+                {b.name}
+                {b.status === 'bientot' && (
+                  <span class="ml-2 text-xs text-gold tracking-widest">BIENTÔT</span>
+                )}
+              </a>
+              <div class="text-sm text-ink-mute">
+                {b.address}, {b.postcode} {b.city}
+              </div>
+            </div>
+          ))}
+        </dd>
       </div>
+
       <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10 border-b border-ink-line/70 pb-6">
         <dt class="text-xs tracking-[0.3em] text-gold sm:w-36">EMAIL</dt>
         <dd class="text-ink-soft">
-          <a href="mailto:hello@koozomart.com" class="underline underline-offset-4 decoration-gold hover:text-ink">
-            hello@koozomart.com
+          <a href="mailto:contact@koozomart.com" class="underline underline-offset-4 decoration-gold hover:text-ink">
+            contact@koozomart.com
           </a>
         </dd>
       </div>
+
       <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-10">
-        <dt class="text-xs tracking-[0.3em] text-gold sm:w-36">RÉSEAUX</dt>
-        <dd class="text-ink-soft">Instagram · à compléter</dd>
+        <dt class="text-xs tracking-[0.3em] text-gold sm:w-36">INSTAGRAM</dt>
+        <dd class="text-ink-soft">
+          <a
+            href="https://www.instagram.com/koozomart/"
+            target="_blank"
+            rel="noopener"
+            class="underline underline-offset-4 decoration-gold hover:text-ink"
+          >
+            @koozomart
+          </a>
+        </dd>
       </div>
     </dl>
   </section>

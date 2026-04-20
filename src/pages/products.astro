@@ -1,36 +1,61 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { products } from '../data/products';
+
+const IG_HANDLE = 'koozomart';
+const IG_URL = `https://www.instagram.com/${IG_HANDLE}/`;
 ---
 
-<Layout title="Produits · Koozo Mart">
+<Layout title="Produits · Koozo Mart" description="Nouveautés, arrivages et coups de cœur sur l'Instagram @koozomart.">
   <section class="mb-14">
     <p class="text-xs tracking-[0.4em] text-gold mb-4">PRODUITS</p>
-    <h1 class="font-serif text-4xl md:text-5xl">Notre sélection</h1>
+    <h1 class="font-serif text-4xl md:text-5xl">Les nouveautés sur Instagram</h1>
     <p class="mt-5 text-ink-soft max-w-xl leading-relaxed">
-      Une petite sélection de ce qui remplit actuellement nos rayons. Mise à jour au fil des arrivages.
+      Nos arrivages, coups de cœur et incontournables sont partagés au fil des semaines
+      sur notre compte Instagram <a href={IG_URL} target="_blank" rel="noopener" class="text-ink underline underline-offset-4 decoration-gold hover:text-gold">@{IG_HANDLE}</a>.
+      Passez nous suivre — et venez les goûter en boutique.
     </p>
   </section>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-14">
-    {products.map((p) => (
-      <article class="group">
-        <div class="aspect-square bg-ink-line/30 overflow-hidden">
-          {p.image && (
-            <img
-              src={p.image}
-              alt={p.name}
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          )}
+  <!-- Instagram feed (Behold.so embed will go here once connected) -->
+  <div id="instagram-feed" class="mb-16">
+    <!-- FEED_EMBED_HERE -->
+    <a
+      href={IG_URL}
+      target="_blank"
+      rel="noopener"
+      class="block group relative aspect-[5/2] border border-ink-line/70 overflow-hidden hover:border-gold transition-colors"
+    >
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
+        <div class="w-14 h-14 rounded-full border border-ink flex items-center justify-center mb-6 group-hover:border-gold group-hover:text-gold transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+          </svg>
         </div>
-        <div class="mt-4 flex items-baseline justify-between">
-          <h2 class="font-serif text-lg">{p.name}</h2>
-          <span class="text-xs text-gold tracking-widest">{p.origin}</span>
-        </div>
-        <p class="mt-1 text-sm text-ink-mute">{p.category}</p>
-        <p class="mt-3 text-sm text-ink-soft leading-relaxed">{p.description}</p>
-      </article>
-    ))}
+        <p class="font-serif text-2xl md:text-3xl">@{IG_HANDLE}</p>
+        <p class="mt-3 text-sm text-ink-mute tracking-widest">VOIR NOS PUBLICATIONS →</p>
+      </div>
+    </a>
   </div>
+
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-ink-line/70 pt-12">
+    <div>
+      <p class="text-xs tracking-[0.4em] text-gold mb-3">NOUVEAUTÉS</p>
+      <p class="font-serif text-lg">Au fil des arrivages</p>
+      <p class="mt-2 text-sm text-ink-soft">Stories et posts dès qu'un nouveau produit arrive.</p>
+    </div>
+    <div>
+      <p class="text-xs tracking-[0.4em] text-gold mb-3">COUPS DE CŒUR</p>
+      <p class="font-serif text-lg">Sélection du mois</p>
+      <p class="mt-2 text-sm text-ink-soft">Ce qu'on aime boire, manger, offrir en ce moment.</p>
+    </div>
+    <div>
+      <p class="text-xs tracking-[0.4em] text-gold mb-3">EN BOUTIQUE</p>
+      <p class="font-serif text-lg">Venez les goûter</p>
+      <p class="mt-2 text-sm text-ink-soft">
+        <a href="/boutiques" class="underline underline-offset-4 decoration-gold hover:text-ink">Trouvez la boutique la plus proche</a>
+      </p>
+    </div>
+  </section>
 </Layout>

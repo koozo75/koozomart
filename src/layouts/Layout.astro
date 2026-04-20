@@ -13,6 +13,7 @@ const {
 
 const nav = [
   { href: '/', label: 'Accueil' },
+  { href: '/boutiques', label: 'Boutiques' },
   { href: '/products', label: 'Produits' },
   { href: '/about', label: 'À propos' },
   { href: '/contact', label: 'Contact' },
@@ -71,8 +72,25 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
           <img src="/logo.jpg" alt="" class="h-8 w-8 rounded-full object-cover bg-ink" />
           <span class="font-serif">Koozo Mart</span>
         </div>
+        <div class="flex items-center gap-5 text-sm text-ink-mute">
+          <a
+            href="https://www.instagram.com/koozomart/"
+            target="_blank"
+            rel="noopener"
+            class="hover:text-gold transition-colors tracking-wider"
+            aria-label="Koozo Mart sur Instagram"
+          >
+            Instagram
+          </a>
+          <a
+            href="mailto:contact@koozomart.com"
+            class="hover:text-gold transition-colors"
+          >
+            contact@koozomart.com
+          </a>
+        </div>
         <p class="text-sm text-ink-mute">
-          &copy; {new Date().getFullYear()} Koozo Mart · Épicerie japonaise & coréenne
+          &copy; Koozo Mart — depuis 2014
         </p>
       </div>
     </footer>
